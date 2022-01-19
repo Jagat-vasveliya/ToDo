@@ -1,0 +1,16 @@
+.title{
+     padding: 5px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    font-family: "Brush Script MT", cursive;
+    font-weight: bolder;
+    font-size: 40px;
+    text-shadow: 1px 1px 10px black;
+    box-shadow: 0 1px 10px 4px #2a28286b;
+}
+@media (max-width: 700px){
+     .title{
+          flex-direction: column;
+     }
+}
