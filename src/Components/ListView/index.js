@@ -12,7 +12,7 @@ export default function ListView() {
 	const filterData = (CurrentStatus) => {
 		const data = ToDo.filter((todo) => todo.status == CurrentStatus).map(
 			(todo, index) => (
-				<li>
+				<li key={index}>
 					<span>
 						{todo.title}
 						<br />
