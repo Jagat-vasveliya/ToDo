@@ -1,0 +1,41 @@
+.listView {
+	border-radius: 20px;
+	overflow: hidden;
+	margin: 5%;
+	color: white;
+	box-shadow: 0px 5px 5px 3px black;
+	height: fit-content;
+}
+.ToDo {
+	background-color: red;
+}
+.In-Progress {
+	background-color: blue;
+}
+.Done {
+	background-color: green;
+}
+.todoTitle {
+	text-align: center;
+	font-size: 25px;
+	font-weight: bolder;
+}
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+li {
+	text-transform: capitalize;
+	font-weight: bold;
+	margin: 0;
+	padding: 3%;
+	box-shadow: 0px 5px 5px black;
+	cursor: pointer;
+}
+li:hover {
+	box-shadow: 0px 10px 5px black;
+}
+.right {
+	float: right;
+}

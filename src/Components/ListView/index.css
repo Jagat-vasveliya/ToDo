@@ -3,7 +3,7 @@
 	text-align: center;
 }
 .todoButton {
-     position: relative;
+	position: relative;
 	margin-top: 1%;
 	border: none;
 	border-color: white;
@@ -16,22 +16,22 @@
 	/* background-image: linear-gradient(140deg, red 0%, blue 50%, green 75%); */
 }
 @keyframes change {
-     0%{
-          animation-delay: 3s;
-          background-color: red;
-          color: white;
-     }
-     50%{
-          background-color: blue;
-          color: white;
-     }
-     100%{
-          background-color: green;
-          color: white;
-     }
+	0% {
+		animation-delay: 3s;
+		background-color: red;
+		color: white;
+	}
+	50% {
+		background-color: blue;
+		color: white;
+	}
+	100% {
+		background-color: green;
+		color: white;
+	}
 }
 .todoButton:hover {
-     animation: change 3s infinite;
+	animation: change 3s infinite;
 }
 .container {
 	display: grid;
@@ -45,48 +45,4 @@
 		grid-column-gap: 0;
 		grid-row-gap: 5%;
 	}
-}
-.listView {
-     border-radius: 20px;
-     overflow: hidden;
-	margin: 5%;
-	color: white;
-	box-shadow: 0px 5px 5px 3px black;
-	height: fit-content;
-}
-.listView1 {
-	transform: rotate(-10deg);
-	background-color: red;
-}
-.listView2 {
-	transform: rotate(0deg);
-	background-color: blue;
-}
-.listView3 {
-	transform: rotate(10deg);
-	background-color: green;
-}
-.todoTitle {
-	text-align: center;
-	font-size: 25px;
-	font-weight: bolder;
-}
-ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-li {
-	text-transform: capitalize;
-	font-weight: bold;
-	margin: 0;
-	padding: 3%;
-	box-shadow: 0px 5px 5px black;
-	cursor: pointer;
-}
-li:hover {
-	box-shadow: 0px 10px 5px black;
-}
-.right {
-	float: right;
 }
