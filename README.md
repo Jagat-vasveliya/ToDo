@@ -3,7 +3,7 @@ OUTPUT: https://share.vidyard.com/watch/KPXs8STEMSos4KzHQjBSG1?
 This is a ToDo List Project,
 It's Done Using React JS,
 For this project I use JSON array for storing the ToDo items,
-and I use many types of functionalitie of react Like,
+and I use many types of functionalitie of react js Like,
 JSON array,
 filter method,
 map method,
