@@ -4,27 +4,28 @@ import Data from "../ListView/ToDo.json";
 export default class AddUpdate extends Component {
 	constructor(props) {
 		super(props);
-		if (this.props.data) {
-			Data.filter((todo) => todo.id == this.props.data).map(
-				(editData) =>
-					(this.state = {
-						id: editData.id,
-						title: editData.title,
-						description: editData.description,
-						status: editData.status,
-						heading: "Update",
-					})
-			);
-		} else {
-			const newId = Data[Data.length - 1]['id'] + 1;
-			this.state = {
-				id: newId,
-				title: "",
-				description: "",
-				status: "",
-				heading: "Add",
-			};
-		}
+		const newId = Data[Data.length - 1]["id"] + 1;
+		this.state = {
+			id: newId,
+			title: "",
+			description: "",
+			status: "ToDo",
+			heading: "Add",
+		};
+	}
+	componentDidMount() {
+		return this.props.data
+			? Data.filter((todo) => todo.id == this.props.data).map(
+					(editData) =>
+						this.setState({
+							id: editData.id,
+							title: editData.title,
+							description: editData.description,
+							status: editData.status,
+							heading: "Update",
+						})
+			  )
+			: null;
 	}
 
 	addToDo = () => {
@@ -95,9 +96,6 @@ export default class AddUpdate extends Component {
 							value={status}
 							onChange={(e) => this.logValue(e)}
 						>
-							<option disabled value="" selected>
-								Select Status
-							</option>
 							<option value="ToDo">ToDO</option>
 							<option value="In-Progress">
 								In Progress
