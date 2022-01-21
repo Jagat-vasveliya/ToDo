@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
 import Data from "../ListView/ToDo.json";
-import { deselectOptions } from "@testing-library/user-event/dist/select-options";
 export default class AddUpdate extends Component {
 	constructor(props) {
 		super(props);
@@ -37,7 +36,7 @@ export default class AddUpdate extends Component {
 				description: description,
 				status: status,
 			});
-			this.props.change(!this.props.addUpdateStatus);
+			this.props.change();
 		} else {
 			alert("Please Enter All The Details");
 		}
