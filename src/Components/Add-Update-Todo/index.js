@@ -4,33 +4,27 @@ import Data from "../ListView/ToDo.json";
 export default class AddUpdate extends Component {
 	constructor(props) {
 		super(props);
+		const { data } = this.props;
 		const newId = Data[Data.length - 1]["id"] + 1;
-		this.state = {
-			id: newId,
-			title: "",
-			description: "",
-			status: "ToDo",
-			heading: "Add",
-		};
+		data
+			? (this.state = {
+					id: data.id,
+					title: data.title,
+					description: data.description,
+					status: data.status,
+					heading: "Update",
+			  })
+			: (this.state = {
+					id: newId,
+					title: "",
+					description: "",
+					status: "ToDo",
+					heading: "Add",
+			  });
 	}
-	componentDidMount() {
-		return this.props.data
-			? Data.filter((todo) => todo.id == this.props.data).map(
-					(editData) =>
-						this.setState({
-							id: editData.id,
-							title: editData.title,
-							description: editData.description,
-							status: editData.status,
-							heading: "Update",
-						})
-			  )
-			: null;
-	}
-
 	addToDo = () => {
 		const { id, title, description, status } = this.state;
-		if (title != "" && description != "" && status != "") {
+		if (title !== "" && description !== "" && status !== "") {
 			Data.push({
 				id: id,
 				title: title,
@@ -44,8 +38,8 @@ export default class AddUpdate extends Component {
 	};
 	editToDo = () => {
 		const { title, description, status } = this.state;
-		if (title != "" && description != "" && status != "") {
-			Data.filter((todo) => todo.id == this.props.data).map(
+		if (title !== "" && description !== "" && status !== "") {
+			Data.filter((todo) => todo.id === this.props.data.id).map(
 				(editData) => {
 					editData.title = title;
 					editData.description = description;
@@ -59,13 +53,11 @@ export default class AddUpdate extends Component {
 	};
 	logValue = (e) => {
 		const { name, value } = e.target;
-		this.setState({ [name]: value }, () => {
-			const { title, description, status } = this.state;
-		});
+		this.setState({ [name]: value }, () => {});
 	};
 
 	render() {
-		const { id, title, description, status, heading } = this.state;
+		const { title, description, status, heading } = this.state;
 		return (
 			<>
 				<h1 className="addTitle">{heading} ToDo</h1>
@@ -108,7 +100,7 @@ export default class AddUpdate extends Component {
 							type="button"
 							className="btn"
 							onClick={
-								heading == "Add"
+								heading === "Add"
 									? this.addToDo
 									: this.editToDo
 							}

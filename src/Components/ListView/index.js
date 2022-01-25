@@ -3,14 +3,14 @@ import AddUpdate from "../Add-Update-Todo";
 import StatusView from "../StatusView";
 import "./index.css";
 import ToDo from "./ToDo.json";
-import ReactDOM from "react-dom";
 
 export default function ListView() {
+	console.log(ToDo);
 	const [addUpdateStatus, updateStatus] = useState(true);
 	const [dataId, setDataId] = useState();
 	const [reRender, setRender] = useState(false);
 	const filterData = (CurrentStatus) => {
-		const data = ToDo.filter((todo) => todo.status == CurrentStatus).map(
+		const data = ToDo.filter((todo) => todo.status === CurrentStatus).map(
 			(todo, index) => (
 				<li key={index}>
 					<span>
@@ -18,7 +18,7 @@ export default function ListView() {
 						<br />
 						{todo.description}
 					</span>
-					{CurrentStatus == "Done" ? (
+					{CurrentStatus === "Done" ? (
 						<button
 							className="right"
 							value={todo.id}
@@ -29,8 +29,7 @@ export default function ListView() {
 					) : (
 						<button
 							className="right"
-							value={todo.id}
-							onClick={(e) => editToDo(e)}
+							onClick={(e) => editToDo(todo)}
 						>
 							✏
 						</button>
@@ -39,18 +38,16 @@ export default function ListView() {
 			)
 		);
 		return data;
-
 	};
-	const editToDo = (e) => {
-		const editData = e.target.value;
-		setDataId(editData);
+	const editToDo = (data) => {
+		setDataId(data);
 		updateStatus(!addUpdateStatus);
 	};
 	const deleteToDo = (e) => {
-		var index = ToDo.findIndex(
-			(arrayIndex) => arrayIndex.id == e.target.value
+		const deleteIndex = ToDo.findIndex(
+			(arrayIndex) => arrayIndex.id === parseInt(e.target.value)
 		);
-		ToDo.splice(index, 1);
+		ToDo.splice(deleteIndex, 1);
 		setRender(!reRender);
 	};
 	const todoItems = filterData("ToDo");
